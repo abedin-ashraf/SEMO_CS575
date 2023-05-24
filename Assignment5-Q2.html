@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        table {
+            margin-bottom: 20px;
+
+        }
+
+        td,
+        th {
+            border: 1px solid black;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CS Conference</h1>
+
+    <section>
+        <h2>Events</h2>
+        <ul>
+            <li>Paper session</li>
+            <li>Workshop session</li>
+            <li>Poster session</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Times</h2>
+        <table>
+            <tr>
+                <th></th>
+                <th>Morning</th>
+                <th>Afternoon</th>
+                <th>Evening</th>
+            </tr>
+            <tr>
+                <td>Paper</td>
+                <td>8-11 AM</td>
+                <td>1-5 PM</td>
+                <td>7-10 PM</td>
+            </tr>
+            <tr>
+                <td>Workshop</td>
+                <td>8-11 AM</td>
+                <td>1-5 PM</td>
+                <td>7-10 PM</td>
+            </tr>
+            <tr>
+                <td>Poster</td>
+                <td>8-11 AM</td>
+                <td>1-5 PM</td>
+                <td>7-10 PM</td>
+            </tr>
+        </table>
+    </section>
+
+    <section>
+        <h2>Registration</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="session">Session to Attend:</label>
+            <select id="session" name="session">
+                <option value="paper">Paper session</option>
+                <option value="workshop">Workshop session</option>
+                <option value="poster">Poster session</option>
+            </select>
+
+            <label for="member">Are you a member?</label>
+            <input type="checkbox" id="member" name="member">
+
+            <br>
+            <input type="submit" value="Register">
+        </form>
+    </section>
+
+</body>
+
+</html>
