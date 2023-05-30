@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Discount Details</title>
+
+</head>
+
+<body>
+    <h1>Discount Details</h1>
+    <div id="itemName"></div>
+    <div id="itemPrice"></div>
+    <div id="discountPercentage"></div>
+    <div id="totalPrice"></div>
+    <div id="expirationMessage"></div>
+
+    <script>
+        (function () {
+            class Item {
+                constructor(name, price, discount) {
+                    this.name = name;
+                    this.price = price;
+                    this.discount = discount;
+                }
+
+                calculateTotalPrice() {
+                    const discountedPrice = this.price - (this.price * this.discount);
+                    return discountedPrice.toFixed(2);
+                }
+            }
+
+            const item = new Item("Product Name", 100.00, 0.2);
+
+            document.getElementById("itemName").innerHTML = "Item Name: " + item.name;
+            document.getElementById("itemPrice").innerHTML = "Item Price: $" + item.price.toFixed(2);
+            document.getElementById("discountPercentage").innerHTML = "Discount Percentage: " + (item.discount * 100) + "%";
+            document.getElementById("totalPrice").innerHTML = "Total Price: $" + item.calculateTotalPrice();
+
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+
+            document.getElementById("expirationMessage").innerHTML = "Offer expires on: " + expirationDate.toDateString();
+        })();
+    </script>
+
+</body>
+
+</html>

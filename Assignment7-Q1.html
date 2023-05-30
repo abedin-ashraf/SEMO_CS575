@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Welcome Message and Course Fees</title>
+    <script>
+        // JavaScript code
+        var greetings = "Welcome back dear student!";
+        var message = "Please check your classes.";
+
+        var course1 = "CS155";
+        var course2 = "MA116";
+        var course3 = "CY101";
+        var course4 = "EN140";
+        var course5 = "EC101";
+
+        var courseFee = 300.00;
+
+        var totalFees = courseFee * 5;
+
+
+        function displayInformation() {
+
+            var fullMessage = greetings + " " + message;
+
+            document.getElementById("welcomeMessage").innerHTML = fullMessage;
+
+            document.getElementById("course1").innerHTML = "Course1: " + course1;
+            document.getElementById("course2").innerHTML = "Course2: " + course2;
+            document.getElementById("course3").innerHTML = "Course3: " + course3;
+            document.getElementById("course4").innerHTML = "Course4: " + course4;
+            document.getElementById("course5").innerHTML = "Course5: " + course5;
+
+            document.getElementById("totalFees").innerHTML = "Total Fees: $" + totalFees.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome Message and Course Fees</h1>
+    <div id="welcomeMessage"></div>
+    <h2>Courses:</h2>
+    <div id="course1"></div>
+    <div id="course2"></div>
+    <div id="course3"></div>
+    <div id="course4"></div>
+    <div id="course5"></div>
+    <h2>Total Fees:</h2>
+    <div id="totalFees"></div>
+
+    <script>
+        window.onload = displayInformation;
+    </script>
+</body>
+
+</html>
