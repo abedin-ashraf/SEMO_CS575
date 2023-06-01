@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Car Rentals</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .car {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .car h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        .car p {
+            margin: 0;
+        }
+
+        .discount {
+            color: #f00;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Chicago Rental Agency</h1>
+    <h3>2200 N California Ave, Chicago, IL 60647</h3>
+
+    <div class="car">
+        <h2>Car 1</h2>
+        <img height="200px" width="400px" src="car1.jpg" alt="">
+        <p>Rate: $50 per day</p>
+        <p>Discount Rate: 10%</p>
+    </div>
+
+    <div class="car">
+        <h2>Car 2</h2>
+        <img height="200px" width="400px" src="car2.jpg" alt="">
+        <p>Rate: $70 per day</p>
+        <p>Discount Rate: 15%</p>
+    </div>
+
+    <h1>Discount Rates</h1>
+
+    <div id="discounts"></div>
+
+    <script>
+        // Function to display discount rates and expiration dates
+        function displayDiscounts() {
+            var discounts = [
+                { rate: 10, expires: '2023-12-31' },
+                { rate: 15, expires: '2024-06-30' }
+            ];
+
+            var discountsDiv = document.getElementById('discounts');
+
+            for (var i = 0; i < discounts.length; i++) {
+                var discount = discounts[i];
+
+                var discountDiv = document.createElement('div');
+                discountDiv.classList.add('discount');
+
+                var rateP = document.createElement('p');
+                rateP.innerHTML = 'Discount Rate: ' + discount.rate + '%';
+                discountDiv.appendChild(rateP);
+
+                var expiresP = document.createElement('p');
+                expiresP.innerHTML = 'Expires: ' + discount.expires;
+                discountDiv.appendChild(expiresP);
+
+                discountsDiv.appendChild(discountDiv);
+            }
+        }
+
+        // Call the function to display discounts
+        displayDiscounts();
+    </script>
+</body>
+
+</html>
