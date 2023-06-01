@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Number Options</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Number Options</h1>
+
+    <label>
+        <input type="radio" name="option" value="even" checked> Option 1: Display Even Numbers
+    </label>
+
+    <label>
+        <input type="radio" name="option" value="odd"> Option 2: Display Odd Numbers
+    </label>
+
+    <button onclick="displayNumbers()">Display Numbers</button>
+
+    <div id="output" class="output"></div>
+
+    <script>
+        function displayNumbers() {
+            var option = document.querySelector('input[name="option"]:checked').value;
+            var outputDiv = document.getElementById('output');
+
+            if (option === 'even') {
+                var evenNumbers = '';
+                var evenSum = 0;
+
+                for (var i = 2; i <= 100; i += 2) {
+                    evenNumbers += i + ' ';
+                    evenSum += i;
+                }
+
+                outputDiv.innerHTML = '<p>Even Numbers: ' + evenNumbers + '</p>';
+                outputDiv.innerHTML += '<p>Sum of Even Numbers: ' + evenSum + '</p>';
+            } else if (option === 'odd') {
+                var oddNumbers = '';
+                var oddSum = 0;
+
+                for (var j = 1; j <= 99; j += 2) {
+                    oddNumbers += j + ' ';
+                    oddSum += j;
+                }
+
+                outputDiv.innerHTML = '<p>Odd Numbers: ' + oddNumbers + '</p>';
+                outputDiv.innerHTML += '<p>Sum of Odd Numbers: ' + oddSum + '</p>';
+            }
+        }
+    </script>
+</body>
+
+</html>
