@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manipulation</title>
+</head>
+
+<body>
+    <h1>Course List</h1>
+    <p id="course1">CS315</p>
+    <p id="course2">CS331</p>
+
+    <script>
+        // Replace CS315 with CS351
+        let elementToReplace = document.querySelector("#course1");
+        elementToReplace.textContent = "CS351";
+
+        // Insert CS445
+        let newCourse = document.createElement("p");
+        newCourse.textContent = "CS445";
+        document.body.appendChild(newCourse);
+
+        // Remove CS331
+        let elementToRemove = document.querySelector("#course2");
+        elementToRemove.remove();
+    </script>
+</body>
+
+</html>

@@ -1,26 +1,13 @@
-<!DOCTYPE html>
-<html>
+<script>
 
-<head>
-    <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 300px;
-        }
+    const ageInput = document.getElementById('ageInput');
 
-        .vertical-img {
-            display: block;
-            margin: auto;
-        }
-    </style>
-</head>
+    const numberInput = document.createElement('input');
+    numberInput.type = 'number';
 
-<body>
-    <div class="container">
-        <img class="vertical-img" src="img2.jpg" alt="Vertical Image">
-    </div>
-</body>
+    numberInput.min = 1;
+    numberInput.max = 100;
 
-</html>
+    ageInput.parentNode.replaceChild(numberInput, ageInput);
+
+</script>

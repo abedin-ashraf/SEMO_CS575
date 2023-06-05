@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher's Weekly Checklist</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .marked {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Teacher's Weekly Checklist</h1>
+
+    <ul id="checklist">
+        <li>Prepare lesson plan</li>
+        <li>Create assignments</li>
+        <li>Grade assignments</li>
+    </ul>
+
+    <form id="newItemForm">
+        <input type="text" placeholder="Enter new task" />
+        <input type="submit" value="Add Task" />
+    </form>
+
+    <button id="showForm">Show Form</button>
+
+    <p id="counter">0 tasks remaining</p>
+
+    <button id="markComplete">Mark Complete</button>
+    <button id="removeCompleted">Remove Completed</button>
+
+    <script>
+        $(function () {
+            var $checklist, $newItemForm;
+            $checklist = $('#checklist');
+            $newItemForm = $('#newItemForm');
+
+            $('li').hide().each(function (index) {
+                $(this).delay(450 * index).fadeIn(1600);
+            });
+
+            function updateCount() {
+                var items = $('li:not(.marked)').length;
+                $('#counter').text(items + " tasks remaining");
+            }
+            updateCount();
+
+            $newItemForm.on('submit', function (e) {
+                e.preventDefault();
+                var text = $('input:text').val();
+                $checklist.append('<li>' + text + '</li>');
+                $('input:text').val('');
+                updateCount();
+            });
+
+            $checklist.on('click', 'li', function () {
+                $(this).toggleClass('marked');
+                updateCount();
+            });
+
+            $('#showForm').on('click', function () {
+                $newItemForm.toggle();
+            });
+
+            $('#markComplete').on('click', function () {
+                $('li').addClass('marked');
+                updateCount();
+            });
+
+            $('#removeCompleted').on('click', function () {
+                $('li.marked').remove();
+                updateCount();
+            });
+        });
+    </script>
+</body>
+
+</html>

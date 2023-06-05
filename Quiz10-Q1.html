@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Vote for Your Favorite Course</title>
+    <style>
+        img {
+            width: 300px;
+            height: 300px;
+            cursor: pointer;
+            margin: 10px;
+            border: 2px solid transparent;
+        }
+
+        img.selected {
+            border-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Vote for your favorite course:</h2>
+        <img src="cs155.png" alt="CS155" onclick="vote('CS155')">
+        <img src="CS265.png" alt="CS265" onclick="vote('CS265')">
+        <img src="CS300.png" alt="CS300" onclick="vote('CS300')">
+    </div>
+
+    <script>
+        function vote(course) {
+            console.log("Vote recorded for " + course);
+            const images = document.getElementsByTagName('img');
+            for (let i = 0; i < images.length; i++) {
+                images[i].classList.remove('selected');
+            }
+
+            event.target.classList.add('selected');
+        }
+    </script>
+</body>
+
+</html>

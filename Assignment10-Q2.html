@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tabbed Information Page</title>
+    <style>
+        .tab-content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <button class="tab" onclick="openTab(event, 'tab1')">Department of Computer Science</button>
+        <button class="tab" onclick="openTab(event, 'tab2')">Harrison College of Business & Computing</button>
+        <button class="tab" onclick="openTab(event, 'tab3')">Southeast Missouri State University</button>
+    </div>
+
+    <div id="tab1" class="tab-content">
+        <h2>Department of Computer Science</h2>
+        <p>The Department of Computer Science at Southeast Missouri State University is a dynamic and innovative
+            academic department dedicated to preparing students for successful careers in the field of computer science.
+            With a commitment to excellence in education and cutting-edge research, the department offers a
+            comprehensive curriculum that covers a wide range of topics including programming, algorithms, data
+            structures, software engineering, artificial intelligence, and computer networks. <br>
+            Overall, the Department of Computer Science at Southeast Missouri State University is dedicated to
+            empowering students with the knowledge, skills, and experiences necessary to excel in the rapidly evolving
+            field of computer science and make meaningful contributions to society.</p>
+
+        <label for="examScore">Select your exam score:</label>
+        <input type="range" id="examScore" min="0" max="100" oninput="showExamScore()">
+        <span id="scoreDisplay">0</span>
+
+    </div>
+
+    <div id="tab2" class="tab-content">
+        <h2>Harrison College of Business & Computing</h2>
+        <p>The Harrison College of Business & Computing at Southeast Missouri State University is a renowned institution
+            that offers a diverse range of programs and opportunities for students interested in business and computing
+            fields. With a strong focus on experiential learning and practical application, the college provides a
+            dynamic educational environment that prepares students for successful careers in today's rapidly evolving
+            business landscape. The faculty members are experts in their respective fields and bring a wealth of
+            industry experience, ensuring that students receive a well-rounded education that combines theoretical
+            knowledge with real-world insights. The college offers a variety of undergraduate and graduate programs,
+            including majors in accounting, finance, management, marketing, computer science, cybersecurity, and more.
+            Through internships, cooperative education experiences, and networking events, students have the chance to
+            gain valuable hands-on experience and forge connections with professionals in their desired fields. The
+            Harrison College of Business & Computing at Southeast Missouri State University is committed to fostering
+            innovation, critical thinking, and ethical leadership, empowering students to become future leaders and
+            change-makers in the business and computing industries.</p>
+        <label for="startDate">Start Date at SEMO:</label>
+        <input type="date" id="startDate">
+    </div>
+
+    <div id="tab3" class="tab-content">
+        <h2>Southeast Missouri State University</h2>
+        <p>Southeast Missouri State University (Southeast or SEMO) is a public university in Cape Girardeau, Missouri.
+            In addition to the main campus, the university has four regional campuses offering full degree programs and
+            a secondary campus housing the Holland College of Arts and Media. The university is accredited by the Higher
+            Learning Commission. <br>
+
+            Enrolling nearly 12,000 students, Southeast offers more than 175 undergraduate degree programs and 75
+            graduate programs. Originally founded in 1873 as a normal school, the university has a traditional strength
+            in teacher education. In recent years, the university's reputation and focus has shifted towards the arts,
+            with the construction of the River Campus creating the state's only campus entirely dedicated to the visual
+            and performing arts. It is the only four year institution of higher education in the Southeast Missouri
+            area.</p>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.272447625368!2d-89.53266157441712!3d37.3123736221055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8877879590736d57%3A0x9e28b87e89a5c9a1!2sSoutheast%20Missouri%20State%20University!5e0!3m2!1sen!2sus!4v1685963177343!5m2!1sen!2sus"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <script>
+        function openTab(event, tabName) {
+            const tabContents = document.getElementsByClassName('tab-content');
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].style.display = 'none';
+            }
+
+            document.getElementById(tabName).style.display = 'block';
+        }
+        function showExamScore() {
+            var slider = document.getElementById("examScore");
+            var scoreDisplay = document.getElementById("scoreDisplay");
+            scoreDisplay.innerHTML = slider.value;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>List Update</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+
+        .list {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>List Update</h1>
+
+    <button onclick="addValueToStart()">Add Value to Start</button>
+    <button onclick="addValueToEnd()">Add Value to End</button>
+
+    <div id="list" class="list"></div>
+
+    <script>
+        var values = ['One', 'Two', 'Three', 'Four'];
+
+        function displayContent() {
+            var listDiv = document.getElementById('list');
+            listDiv.innerHTML = '<p>Content: ' + values.join(', ') + '</p>';
+        }
+
+        function addValueToStart() {
+            values.unshift('Five');
+            displayContent();
+        }
+
+        function addValueToEnd() {
+            values.push('Six');
+            displayContent();
+        }
+
+        displayContent();
+    </script>
+</body>
+
+</html>

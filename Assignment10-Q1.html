@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <hl>THE MAKER BUS</hl>
+        <nav>
+            <a href="jq-load.html">HOME</a>
+            <a href="jq-load2 . html">ROUTE</a>
+            <a href="jq-load3.html">TOYS</a>
+            <a href="example.html" class="current">TIMETABLE</a>
+        </nav>
+    </header>
+    <section id="content">
+        <div id="container">
+            <div class="third">
+                <div id="event">
+                    <a id="ca" href="ca.html">
+                        <img src="img/map-ca .png" alt="SF, CA" />San Francisco, CA</a>
+                    <a id="tx" href="tx.html">
+                        <img src="img/map-tx . png" alt="Austin, TX" />Austin, TX</a>
+                    <a id="ny" href="ny.html">
+                        <img src="img/map-ny.png" alt="New York, NY" />New York, NY</a>
+                </div>
+            </div>
+            <div class="third">
+                <div id="sessions">Select an event from the left</div>
+            </div>
+            <div class="third">
+                <div id="details">Details</div>
+            </div>
+        </div>
+    </section>
+    <script src="js/jquery-1.11.0 .min.js"></script>
+    <script>
+        $(function () {
+            var times;
+            $.ajax({
+                beforeSend: function (xhr) {
+                    if (xhr.overrideMimeType) {
+                        xhr.overrideMimeType("application/json");
+                    }
+                }
+            });
+            function loadTimetable() {
+                $.getJSON(' data/example.json')
+                    .done(function (data) {
+                        times = data;
+                    }).fail(function () {
+                        $('#event').html('Sorry! We could not load the timetable at the moment');
+                    })
+            }
+            loadTimetable();
+
+            $('#content').on('click', '#event a', function (e) {
+                e.preventDefault();
+                var loc = this.id.toUpperCase();
+
+                var newContent = '';
+                for (var i = O; i < times[loc].length; i++) {
+                    newContent += '<li><span class="time">' + times[loc][i].time + '</span>';
+                    newContent += '<a href="description.html#';
+                    newContent += times[loc][i].title.replace(/ /g, '-') + '">';
+                    newContent += times[loc][i].title + '</a></li>';
+                }
+                $('#sessions').html('<ul>' + newContent + '</ul>');
+                $('#event a.current').removeClass('current');
+                $(this).addClass('current');
+                $('#details').text(' ');
+            });
+
+            $('#content').on('click', '#sessions li a', function (e) {
+                e.preventDefault();
+                var fragment = this.href;
+
+                fragment = fragment.replace('#', ' #');
+                $('#details').load(fragment);
+
+                $('#sessions a.current').removeClass('current');
+                $(this).addClass('current');
+            });
+
+            $('nav a').on('click', function (e) {
+                e.preventDefault();
+                var url = this.href;
+                $('nav a.current').removeClass('current');
+                $(this).addClass('current');
+                $('#container').remove();
+                $('#content').load(url + ' #container').hide().fadeln('slow');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
