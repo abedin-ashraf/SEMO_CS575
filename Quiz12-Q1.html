@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table Sorting Example</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <table id="myTable">
+        <tr>
+            <th onclick="sortTable(0)">Name</th>
+            <th onclick="sortTable(1)">Q1 score</th>
+            <th onclick="sortTable(2)">Q2 score</th>
+            <th onclick="sortTable(3)">Q3 score</th>
+        </tr>
+        <tr>
+            <td>Tom Jonh</td>
+            <td>10</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Sarah James</td>
+            <td>9</td>
+            <td>10</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>Kareem Jack</td>
+            <td>10</td>
+            <td>10</td>
+            <td>9</td>
+        </tr>
+    </table>
+
+    <script>
+        function sortTable(columnIndex) {
+            var table, rows, switching, i, x, y, shouldSwitch;
+            table = document.getElementById("myTable");
+            switching = true;
+
+            while (switching) {
+                switching = false;
+                rows = table.rows;
+
+                for (i = 1; i < (rows.length - 1); i++) {
+                    shouldSwitch = false;
+                    x = rows[i].getElementsByTagName("TD")[columnIndex];
+                    y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
+
+                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                        shouldSwitch = true;
+                        break;
+                    }
+                }
+
+                if (shouldSwitch) {
+                    rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                    switching = true;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
