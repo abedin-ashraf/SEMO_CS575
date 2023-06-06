@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript &amp; jQuery - Chapter 13: Form Enhancement and Validation - Submit disabled</title>
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Trocchi);
+
+        body {
+            background-color: #90908c;
+            margin: 0px;
+        }
+
+        form {
+            font-family: trocchi, georgia, times, serif;
+            max-width: 1000px;
+            margin: 0px auto 0px auto;
+        }
+
+        .one-third,
+        .two-thirds {
+            background-color: #f8584a;
+            border: 12px solid #fff;
+            float: left;
+            padding: 10px;
+            margin: 10px;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .one-third {
+            width: 268px;
+        }
+
+        .two-thirds {
+            width: 530px;
+        }
+
+        .one-third fieldset {
+            border: none;
+            margin: 0.5em;
+        }
+
+        .two-thirds fieldset {
+            border: none;
+            margin: 2.5em;
+        }
+
+        .container .one-third,
+        .container .two-thirds {
+            height: 35em;
+        }
+
+        .login .one-third,
+        .login .two-thirds {
+            height: 20em;
+        }
+
+        #logo {
+            width: 220px;
+            height: 220px;
+            margin: 1em auto 2em auto;
+            display: block;
+        }
+
+        h2 {
+            font-weight: normal;
+            margin: 0px;
+        }
+
+        p {
+            font-size: 0.8em;
+            line-height: 1.6em;
+            margin: 1em;
+        }
+
+        .welcome {
+            text-align: center;
+        }
+
+        p.intro {
+            margin: 2em;
+        }
+
+
+        /* FORM STYLES */
+        legend {
+            font-size: 160%;
+            position: relative;
+            color: #fff;
+        }
+
+        .one-third legend {
+            top: -0.2em;
+            left: -0.6em;
+        }
+
+        .two-thirds legend {
+            top: -1em;
+            left: -1em;
+        }
+
+        label {
+            width: 100%;
+            display: block;
+        }
+
+        label[for="parentsConsent"],
+        label[for="showPwd"],
+        label[for="search"],
+        label[for="print"],
+        label[for="other"],
+        label[for="parents-consent"] {
+            display: inline;
+        }
+
+        label[for="equipmentType"],
+        label[for="model"] {
+            display: inline-block;
+            width: 4em;
+        }
+
+        input {
+            border: none;
+            padding: 8px;
+            line-height: 1.2em;
+            margin-bottom: 1.4em;
+            font-size: 1.2em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="color"],
+        input[type="number"] {
+            width: 90%;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="password"],
+        input[type="date"],
+        input[type="color"],
+        #bio {
+            box-shadow: inset 0px 2px 2px #000;
+            outline: 0px;
+        }
+
+        input[type="submit"],
+        #submit {
+            background-color: #000;
+            border-radius: 5px;
+            color: #fff;
+            display: block;
+            float: right;
+            font-family: trocchi, georgia, times, serif;
+            font-size: 1.2em;
+            margin-right: 1.4em;
+        }
+
+        input[type="submit"]:hover,
+        #submit:hover {
+            background-color: #666;
+            cursor: pointer;
+            text-shadow: 2px 2px 2px #000;
+            box-shadow: inset 0px 2px 2px #000;
+        }
+
+        .register input[type="submit"] {
+            margin: 1em 0em 0em 0em;
+        }
+
+        input.disabled {
+            background-color: #999;
+        }
+
+        input.disabled:hover {
+            background-color: #999;
+            text-shadow: none;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        textarea {
+            width: 100%;
+            height: 5em;
+            clear: left;
+            border: none;
+        }
+
+        .req {
+            color: #000;
+            font-size: 0.6em;
+            position: relative;
+            top: -0.5em;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .fail {
+            background-image: url("../img/cross.png");
+        }
+
+        .pass {
+            background-image: url("../img/tick.png");
+        }
+
+        .fail,
+        .pass {
+            background-repeat: no-repeat;
+            background-position: right center;
+        }
+
+
+        span.error {
+            padding-top: 1px;
+            margin-top: -1.4em;
+            margin-bottom: 1.4em;
+            display: block;
+            padding-left: 20px;
+            color: #242424;
+            background-image: url("../img/icon-warning.png");
+            background-position: left 3px;
+            background-repeat: no-repeat;
+        }
+
+        textarea+span.error,
+        #bio-count {
+            margin: 0px;
+        }
+
+        /* TEXTAREA */
+        span#bio-count.warn b,
+        span#bio-count.error b {
+            border-radius: 16px;
+            padding-top: 4px;
+            width: 32px;
+            height: 28px;
+            display: inline-block;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .warn b {
+            color: #ffff66;
+            background-color: #333;
+        }
+
+        .error b {
+            color: #ff9966;
+            background-color: #000;
+        }
+
+        div.number-spin-btn-container {
+            margin-bottom: 1.6em !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container login">
+        <form id="how-heard" action="/heard" method="post">
+            <div class="one-third column">
+                <img src="logo.png" alt="logo" id="logo" />
+            </div>
+            <div class="two-thirds column" id="main">
+                <fieldset>
+                    <legend>How did you hear of us?</legend>
+
+                    <input type="radio" name="heard" value="search" id="search" />
+                    <label for="search">Search engine</label><br>
+
+                    <input type="radio" name="heard" value="print" id="print" />
+                    <label for="print">Newspaper or magazine</label><br>
+
+                    <input type="radio" name="heard" value="other" id="other" />
+                    <label for="other">Other</label><br>
+                    <input type="text" name="other-input" id="other-text" />
+
+                    <input id="submit" type="submit" value="submit" />
+                </fieldset>
+            </div><!-- .two-thirds -->
+        </form>
+    </div><!-- .container -->
+    <script>
+        (function () {
+            var form, options, other, otherText, submitBtn; // Declare variables
+            form = document.getElementById('how-heard'); // Get the form
+            options = form.elements.heard; // Get the radio buttons
+            other = document.getElementById('other'); // Other radio button
+            otherText = document.getElementById('other-text'); // Other text input
+            submitBtn = document.getElementById('submit'); // Submit button
+
+            for (var i = 0; i < options.length; i++) {
+                addEvent(options[i], 'click', radioChanged); // Add event listener to radio buttons
+            }
+
+            addEvent(otherText, 'input', radioChanged); // Add event listener to other text input
+
+            function radioChanged() {
+                var isOtherChecked = other.checked;
+                var isOtherTextEmpty = otherText.value.trim() === '';
+
+                if (isOtherChecked && isOtherTextEmpty) {
+                    submitBtn.disabled = true; // Disable the submit button
+                } else {
+                    submitBtn.disabled = false; // Enable the submit button
+                }
+            }
+        }());
+
+    </script>
+</body>
+
+</html>
