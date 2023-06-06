@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cat Photo Viewer</title>
+    <style>
+        .photo-viewer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .photo-viewer img {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="photo-viewer">
+        <img src="cat1.jpg" alt="Cat 1">
+        <img src="cat2.jpg" alt="Cat 2">
+        <img src="cat3.jpg" alt="Cat 3">
+        <img src="cat4.jpg" alt="Cat 4">
+    </div>
+
+    <script>
+        const photoViewer = document.querySelector('.photo-viewer');
+        const images = photoViewer.querySelectorAll('img');
+
+        images.forEach(image => {
+            image.addEventListener('click', () => {
+                // Logic to display the clicked image in full size or perform any desired action
+            });
+        });
+
+    </script>
+</body>
+
+</html>

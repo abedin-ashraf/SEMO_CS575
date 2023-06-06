@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cat Accordion</title>
+    <style>
+        /* accordion.css */
+
+        .accordion-item {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .accordion-header {
+            background-color: #f0f0f0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            background-color: #fff;
+        }
+
+        .accordion-item.active .accordion-content {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-header">Bengal Cat</div>
+            <div class="accordion-content">Bengal cats are a highly sought-after breed known for their exotic appearance
+                and
+                energetic nature. With
+                their distinctive spotted or marbled coat patterns, resembling those of wild leopards or jaguars, Bengal
+                cats have a captivating look. They are intelligent, curious, and highly active, requiring mental and
+                physical stimulation to thrive. Bengal cats form strong bonds with their owners and enjoy interactive
+                playtime. With proper care and attention, including regular exercise and enrichment, Bengal cats make
+                wonderful companions for those who appreciate their wild beauty and playful personality.</div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Persian Cat</div>
+            <div class="accordion-content">Persian cats are a popular and recognizable breed known for their luxurious
+                long fur, expressive eyes,
+                and calm demeanor. These cats have a distinct round face with a short nose and are often considered one
+                of the most beautiful breeds. Persian cats have a gentle and laid-back temperament, making them
+                excellent companions for a relaxed and quiet home environment. They are generally affectionate and enjoy
+                spending time with their owners, although they may be more reserved with strangers. Due to their long
+                and dense fur, Persian cats require regular grooming to maintain their coat's health and prevent
+                matting. They are relatively low-energy cats and prefer a calm and comfortable lifestyle. Persian cats
+                make wonderful indoor companions, providing companionship and a touch of elegance to their owners'
+                lives.</div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-header">Siamese Cat</div>
+            <div class="accordion-content">Siamese cats are a distinctive and vocal breed known for their striking blue
+                almond-shaped eyes, short
+                coat, and sleek body. They have a reputation for being social, affectionate, and highly interactive with
+                their human companions. Siamese cats are often described as being quite talkative, expressing their
+                opinions and desires through their vocalizations. They are intelligent and curious cats, always eager to
+                explore their surroundings and engage in play. Siamese cats form strong bonds with their owners and
+                thrive on attention and interaction. They are known for their loyalty and may even follow their favorite
+                humans around the house. With their charming personality and striking appearance, Siamese cats make
+                delightful companions for those who appreciate their active and sociable nature.</div>
+        </div>
+    </div>
+    <script>
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            header.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+    </script>
+</body>
+
+</html>

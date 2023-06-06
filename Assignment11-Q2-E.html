@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cat Responsive Slider</title>
+    <style>
+        .slider {
+            display: flex;
+            overflow: hidden;
+            max-width: 100%;
+            position: relative;
+        }
+
+        .slide {
+            flex-shrink: 0;
+            width: 100%;
+            display: none;
+        }
+
+        .slide img {
+            width: 900px;
+            height: 500px;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .slider-controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="slider">
+        <div class="slide">
+            <img src="cat1.jpg" alt="Cat 1">
+        </div>
+        <div class="slide">
+            <img src="cat2.jpg" alt="Cat 2">
+        </div>
+        <div class="slide">
+            <img src="cat3.jpg" alt="Cat 3">
+        </div>
+        <div class="slide">
+            <img src="cat4.jpg" alt="Cat 4">
+        </div>
+    </div>
+
+    <div class="slider-controls">
+        <button onclick="previousSlide()">Previous</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(slideIndex) {
+            slides.forEach((slide, index) => {
+                if (index === slideIndex) {
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            }
+            showSlide(currentSlide);
+        }
+
+        // Set the initial slide
+        showSlide(currentSlide);
+    </script>
+</body>
+
+</html>

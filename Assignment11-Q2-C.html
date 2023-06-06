@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cat Modal Window</title>
+    <style>
+        /* modal.css */
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            max-width: 600px;
+            margin: 100px auto;
+            border-radius: 5px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button id="openModal">Open Modal</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Bengal Cat</h2>
+            <p>Bengal cats are a highly sought-after breed known for their exotic appearance and energetic nature. With
+                their distinctive spotted or marbled coat patterns, resembling those of wild leopards or jaguars, Bengal
+                cats have a captivating look. They are intelligent, curious, and highly active, requiring mental and
+                physical stimulation to thrive. Bengal cats form strong bonds with their owners and enjoy interactive
+                playtime. With proper care and attention, including regular exercise and enrichment, Bengal cats make
+                wonderful companions for those who appreciate their wild beauty and playful personality.</p>
+        </div>
+    </div>
+    <script>
+        const openModalBtn = document.getElementById('openModal');
+        const modal = document.getElementById('myModal');
+        const closeModalBtn = modal.querySelector('.close');
+
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', event => {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+
+</html>
